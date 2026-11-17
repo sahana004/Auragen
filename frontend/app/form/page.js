@@ -1,13 +1,16 @@
 "use client";
 import { useState } from "react";
 import { formSchema, allFields, initialValues, validateField } from "./formSchema";
+import useFrictionTracker from "../../hooks/useFrictionTracker";
+import FrictionDebugPanel from "../../components/FrictionDebugPanel";
 
 const inputClass = (hasError) =>
-  `w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 ${
+  `w-full rounded-lg border px-3 py-2 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 ${
     hasError ? "border-red-500" : "border-gray-300"
   }`;
 
 export default function LoanFormPage() {
+  const { metrics, fieldStats } = useFrictionTracker();
   const [values, setValues] = useState(initialValues());
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -60,6 +63,7 @@ export default function LoanFormPage() {
 
   return (
     <main className="mx-auto max-w-3xl p-6">
+      <FrictionDebugPanel metrics={metrics} fieldStats={fieldStats} />
       <h1 className="text-2xl font-bold">Loan application</h1>
       <p className="mb-6 text-sm text-gray-600">Infotact portal: please complete all sections.</p>
 
