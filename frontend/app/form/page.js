@@ -10,7 +10,7 @@ const inputClass = (hasError) =>
   }`;
 
 export default function LoanFormPage() {
-  const { metrics, fieldStats } = useFrictionTracker();
+  const { metrics, fieldStats, connection, reportValidationError } = useFrictionTracker();
   const [values, setValues] = useState(initialValues());
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -24,8 +24,10 @@ export default function LoanFormPage() {
   };
 
   const handleBlur = (field) => {
+    const message = validateField(field, values[field.id]);
     setTouched((prev) => ({ ...prev, [field.id]: true }));
-    setErrors((prev) => ({ ...prev, [field.id]: validateField(field, values[field.id]) }));
+    setErrors((prev) => ({ ...prev, [field.id]: message }));
+    if (message) reportValidationError(field.id);
   };
 
   const handleSubmit = (e) => {
@@ -41,6 +43,7 @@ export default function LoanFormPage() {
 
     const firstBad = allFields.find((f) => newErrors[f.id]);
     if (firstBad) {
+      reportValidationError("submit");
       document.getElementById(firstBad.id)?.focus();
       return;
     }
@@ -63,7 +66,7 @@ export default function LoanFormPage() {
 
   return (
     <main className="mx-auto max-w-3xl p-6">
-      <FrictionDebugPanel metrics={metrics} fieldStats={fieldStats} />
+      <FrictionDebugPanel metrics={metrics} fieldStats={fieldStats} connection={connection} />
       <h1 className="text-2xl font-bold">Loan application</h1>
       <p className="mb-6 text-sm text-gray-600">Infotact portal: please complete all sections.</p>
 
