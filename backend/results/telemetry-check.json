@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-11-19T03:55:11.174Z",
+  "config": {
+    "weights": {
+      "speed": 0.15,
+      "turns": 0.2,
+      "hesitation": 0.2,
+      "rage": 0.25,
+      "errors": 0.2
+    },
+    "ranges": {
+      "speed": {
+        "low": 400,
+        "high": 1500
+      },
+      "turns": {
+        "low": 1,
+        "high": 6
+      },
+      "hesitation": {
+        "low": 0,
+        "high": 10000
+      },
+      "rage": {
+        "low": 0,
+        "high": 2
+      },
+      "errors": {
+        "low": 0,
+        "high": 4
+      }
+    },
+    "smoothing": {
+      "rise": 0.5,
+      "fall": 0.15
+    },
+    "threshold": 50,
+    "sustainMs": 2000,
+    "cooldownMs": 30000
+  },
+  "phases": [
+    {
+      "phase": "calm",
+      "min": 0,
+      "avg": 0,
+      "max": 0,
+      "final": 0,
+      "triggers": 0
+    },
+    {
+      "phase": "busy",
+      "min": 7,
+      "avg": 9,
+      "max": 11,
+      "final": 9,
+      "triggers": 0
+    },
+    {
+      "phase": "confused",
+      "min": 42,
+      "avg": 72,
+      "max": 78,
+      "final": 74,
+      "triggers": 1
+    },
+    {
+      "phase": "recovery",
+      "min": 3,
+      "avg": 20,
+      "max": 63,
+      "final": 3,
+      "triggers": 0
+    }
+  ],
+  "checks": [
+    {
+      "label": "Calm user stays low (max < 25)",
+      "passed": true
+    },
+    {
+      "label": "Calm user never triggers",
+      "passed": true
+    },
+    {
+      "label": "Busy user stays below threshold",
+      "passed": true
+    },
+    {
+      "label": "Busy user never triggers",
+      "passed": true
+    },
+    {
+      "label": "Confused user crosses threshold",
+      "passed": true
+    },
+    {
+      "label": "Confused user triggers exactly once (cooldown works)",
+      "passed": true
+    },
+    {
+      "label": "Confused average is far higher than busy average",
+      "passed": true
+    },
+    {
+      "label": "Score falls back after recovery (final < 25)",
+      "passed": true
+    },
+    {
+      "label": "No trigger during recovery",
+      "passed": true
+    }
+  ]
+}

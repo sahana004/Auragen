@@ -3,13 +3,15 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const { WebSocketServer } = require("ws");
+const { createScorer } = require("./cognitiveLoad");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Latest telemetry per browser session. The Cognitive Load Score reads this later.
+// Latest telemetry per browser session, and one scorer per session.
 const sessions = new Map();
+const scorers = new Map();
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok", service: "auragen-backend" });
@@ -44,28 +46,57 @@ wss.on("connection", (socket) => {
         packets: 0,
         metrics: null,
         fields: {},
+        score: 0,
+        level: "calm",
+        triggerCount: 0,
+        lastTrigger: null,
       });
+      scorers.set(sessionId, createScorer());
       console.log(`[${sessionId.slice(0, 8)}] session started on ${msg.page}`);
     }
 
-    if (msg.type === "telemetry" && sessions.has(msg.sessionId)) {
+    if (msg.type === "telemetry" && sessions.has(msg.sessionId) && msg.metrics) {
       const s = sessions.get(msg.sessionId);
+      const result = scorers.get(msg.sessionId).update(msg.metrics, msg.fields || {});
+
       s.packets += 1;
       s.metrics = msg.metrics;
-      s.fields = msg.fields;
+      s.fields = msg.fields || {};
+      s.score = result.score;
+      s.level = result.level;
       s.updatedAt = Date.now();
+
+      // Tell the browser its current score (the frontend will show this later)
+      socket.send(JSON.stringify({ type: "score", score: result.score, level: result.level }));
 
       const m = msg.metrics;
       console.log(
-        `[${msg.sessionId.slice(0, 8)}] speed=${m.avgVelocity} turns=${m.directionChanges} ` +
-          `rage=${m.rageClicksRecent} errors=${m.clickErrorsRecent} field=${m.activeFieldId || "-"}`
+        `[${msg.sessionId.slice(0, 8)}] score=${String(result.score).padStart(3)} (${result.level}) ` +
+          `speed=${m.avgVelocity} turns=${m.directionChanges} rage=${m.rageClicksRecent} ` +
+          `errors=${m.clickErrorsRecent} field=${m.activeFieldId || "-"}`
       );
+
+      if (result.trigger) {
+        s.triggerCount += 1;
+        s.lastTrigger = result.trigger;
+        const why = result.trigger.reasons.map((r) => r.label).join(", ");
+        const field = result.trigger.frictionPoint ? result.trigger.frictionPoint.fieldId : "unknown";
+        console.log(
+          `\n>>> FRICTION TRIGGER [${msg.sessionId.slice(0, 8)}] score=${result.trigger.score} ` +
+            `field=${field} reasons: ${why}\n`
+        );
+        // This is the event that will start the LLM in Week 2
+        socket.send(JSON.stringify({ type: "friction_trigger", ...result.trigger }));
+      }
     }
   });
 
   socket.on("close", () => {
     console.log("Client disconnected");
-    if (sessionId) sessions.delete(sessionId);
+    if (sessionId) {
+      sessions.delete(sessionId);
+      scorers.delete(sessionId);
+    }
   });
 });
 
