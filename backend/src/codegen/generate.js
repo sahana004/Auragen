@@ -46,8 +46,10 @@ function createModel() {
       model: new ChatOpenAI({
         model: name,
         temperature: 0.2,
+        maxTokens: 4096,
         apiKey: process.env.GROQ_API_KEY,
         configuration: { baseURL: GROQ_BASE_URL },
+        ...(name.includes("gpt-oss") ? { modelKwargs: { reasoning_effort: "low" } } : {}),
       }),
     };
   }

@@ -1,0 +1,745 @@
+{
+  "date": "2026-11-21",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "runsCompleted": 10,
+  "fullyValid": 8,
+  "validRatePercent": 80,
+  "errors": 0,
+  "avgSeconds": 7.2,
+  "avgLines": 321.5,
+  "perCheck": {
+    "syntax": {
+      "label": "Parses as valid JSX",
+      "passed": 9,
+      "total": 10
+    },
+    "export": {
+      "label": "Default-exports a Wizard function",
+      "passed": 10,
+      "total": 10
+    },
+    "imports": {
+      "label": "Has no import or require",
+      "passed": 10,
+      "total": 10
+    },
+    "forbidden": {
+      "label": "No network, eval or storage calls",
+      "passed": 10,
+      "total": 10
+    },
+    "components": {
+      "label": "Uses only allowed components",
+      "passed": 10,
+      "total": 10
+    },
+    "initial": {
+      "label": "Starts state from initialValues",
+      "passed": 10,
+      "total": 10
+    },
+    "fields": {
+      "label": "Includes every form field",
+      "passed": 10,
+      "total": 10
+    },
+    "stepper": {
+      "label": "Uses the Stepper component",
+      "passed": 10,
+      "total": 10
+    },
+    "submit": {
+      "label": "Calls onSubmit",
+      "passed": 10,
+      "total": 10
+    },
+    "nav": {
+      "label": "Has Back and Next buttons",
+      "passed": 9,
+      "total": 10
+    },
+    "hint": {
+      "label": "Adds a hint for the friction field",
+      "passed": 9,
+      "total": 10
+    }
+  },
+  "runs": [
+    {
+      "run": 1,
+      "scenario": "PAN format errors",
+      "frictionField": "pan",
+      "valid": false,
+      "seconds": 9.4,
+      "lines": 284,
+      "attempts": 1,
+      "failed": [
+        "Parses as valid JSX (Unterminated string constant. (284:17))",
+        "Has Back and Next buttons"
+      ],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": false
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": false
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "scenario": "Invalid email",
+      "frictionField": "email",
+      "valid": true,
+      "seconds": 6.5,
+      "lines": 325,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "scenario": "Date of birth confusion",
+      "frictionField": "dob",
+      "valid": true,
+      "seconds": 7.4,
+      "lines": 317,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 4,
+      "scenario": "Monthly income unsure",
+      "frictionField": "monthlyIncome",
+      "valid": true,
+      "seconds": 7.3,
+      "lines": 343,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 5,
+      "scenario": "Loan amount out of range",
+      "frictionField": "loanAmount",
+      "valid": true,
+      "seconds": 6.9,
+      "lines": 346,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 6,
+      "scenario": "Phone number errors",
+      "frictionField": "phone",
+      "valid": true,
+      "seconds": 7.3,
+      "lines": 337,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 7,
+      "scenario": "Employer name hesitation",
+      "frictionField": "employerName",
+      "valid": true,
+      "seconds": 6.9,
+      "lines": 287,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 8,
+      "scenario": "Existing EMI confusion",
+      "frictionField": "existingEmi",
+      "valid": true,
+      "seconds": 6.5,
+      "lines": 314,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 9,
+      "scenario": "Address textarea",
+      "frictionField": "address",
+      "valid": true,
+      "seconds": 7,
+      "lines": 350,
+      "attempts": 1,
+      "failed": [],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "run": 10,
+      "scenario": "Tenure dropdown",
+      "frictionField": "tenure",
+      "valid": false,
+      "seconds": 6.6,
+      "lines": 312,
+      "attempts": 1,
+      "failed": [
+        "Adds a hint for the friction field"
+      ],
+      "checks": [
+        {
+          "id": "syntax",
+          "label": "Parses as valid JSX",
+          "ok": true
+        },
+        {
+          "id": "export",
+          "label": "Default-exports a Wizard function",
+          "ok": true
+        },
+        {
+          "id": "imports",
+          "label": "Has no import or require",
+          "ok": true
+        },
+        {
+          "id": "forbidden",
+          "label": "No network, eval or storage calls",
+          "ok": true
+        },
+        {
+          "id": "components",
+          "label": "Uses only allowed components",
+          "ok": true
+        },
+        {
+          "id": "initial",
+          "label": "Starts state from initialValues",
+          "ok": true
+        },
+        {
+          "id": "fields",
+          "label": "Includes every form field",
+          "ok": true
+        },
+        {
+          "id": "stepper",
+          "label": "Uses the Stepper component",
+          "ok": true
+        },
+        {
+          "id": "submit",
+          "label": "Calls onSubmit",
+          "ok": true
+        },
+        {
+          "id": "nav",
+          "label": "Has Back and Next buttons",
+          "ok": true
+        },
+        {
+          "id": "hint",
+          "label": "Adds a hint for the friction field",
+          "ok": false
+        }
+      ]
+    }
+  ]
+}
