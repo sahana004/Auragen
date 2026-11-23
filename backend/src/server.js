@@ -1,4 +1,5 @@
 require("dotenv").config();
+const wizardRoutes = require("./wizardRoutes");
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
@@ -8,6 +9,7 @@ const { createScorer } = require("./cognitiveLoad");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/api", wizardRoutes);
 
 // Latest telemetry per browser session, and one scorer per session.
 const sessions = new Map();
